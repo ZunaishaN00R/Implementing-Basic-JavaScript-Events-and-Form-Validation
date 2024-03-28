@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form id="form">
+        <h1 id="h1">Registration Form</h1>
+
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" required oninput="validateName()">
+
+        <label for="email">Email : </label>
+        <input type="email" id="email" name="email" required oninput="validateEmail()">
+
+        <label for="password">Password : </label>
+        <div class="password-container">
+            <input type="password" id="password" name="password" required oninput="validatePassword()">
+            <span class="eye-icon" onclick="togglePassword()">&#128065;</span>
+        </div>
+
+        <label for="cpassword">Confirm Password : </label>
+        <div class="password-container">
+            <input type="password" id="cpassword" name="cpassword" required oninput="validatePassword()">
+            <span class="eye-icon" onclick="togglePassword()">&#128065;</span>
+        </div>
+
+        <span id="message"></span><br><br>
+
+        <button type="button" onclick="valid()">Submit</button>
+    </form>
+
+    <script>
+        function validateName() {
+            var nameInput = document.getElementById("name");
+            var regex = /^[a-zA-Z\s]+$/;
+
+            if (!regex.test(nameInput.value)) {
+                document.getElementById("message").innerHTML = "Invalid name. Please use only letters and spaces.";
+            } else {
+                document.getElementById("message").innerHTML = "";
+            }
+        }
+
+        function validateEmail() {
+            var emailInput = document.getElementById("email");
+            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!regex.test(emailInput.value)) {
+                document.getElementById("message").innerHTML = "Invalid email address.";
+            } else {
+                document.getElementById("message").innerHTML = "";
+            }
+        }
+
+        function validatePassword() {
+            var passwordInput = document.getElementById("password");
+            var cpasswordInput = document.getElementById("cpassword");
+            var messageElement = document.getElementById("message");
+
+            if (passwordInput.value !== cpasswordInput.value) {
+                messageElement.innerHTML = "Passwords do not match.";
+            } else {
+                messageElement.innerHTML = "";
+            }
+        }
+
+        function togglePassword() {
+            var passwordInput = document.getElementById("password");
+            var eyeIcon = document.querySelector(".eye-icon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.innerHTML = "&#128064;"; // Closed eye icon
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.innerHTML = "&#128065;"; // Open eye icon
+            }
+        }
+
+        function valid() {
+            validateName();
+            validateEmail();
+            validatePassword();
+
+            var messageElement = document.getElementById("message");
+
+            if (messageElement.innerHTML === "") {
+                alert('Form Submitted!');
+                document.getElementById("form").submit();
+            }
+        }
+    </script>
+</body>
+</html>
