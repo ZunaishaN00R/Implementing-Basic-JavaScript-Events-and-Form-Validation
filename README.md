@@ -1,3 +1,9 @@
+
+
+![a](https://github.com/user-attachments/assets/07c4b095-04f1-42f3-a6b9-52bc3c8abc93)
+![b](https://github.com/user-attachments/assets/f9136536-6935-4d64-a2fe-335a40b7bc52)
+![c](https://github.com/user-attachments/assets/4089da17-428c-4909-8d65-6f4ec6580066)
+
 ## Lab Task: Implementing Basic JavaScript Events and Form Validation
 
 ### Objective
